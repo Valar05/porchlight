@@ -1,0 +1,52 @@
+name: Validate Porchlight
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run build
+      - name: Check freshness
+        id: freshness
+        continue-on-error: true
+        run: npm run freshness
+      - name: Open one freshness issue
+        if: steps.freshness.outcome == 'failure' && github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '[freshness] Porchlight map refresh needed';
+            const {data} = await github.rest.issues.listForRepo({owner: context.repo.owner, repo: context.repo.repo, state: 'open'});
+            if (!data.some(issue => issue.title === title)) {
+              await github.rest.issues.create({owner: context.repo.owner, repo: context.repo.repo, title, body: 'One or more site packs failed the deterministic freshness gate. No successful recheck is inferred. Review the workflow receipt and refresh only with verified evidence.'});
+            }
+      - name: Fail stale map
+        if: steps.freshness.outcome == 'failure'
+        run: exit 1
+      - name: Build distributable archives
+        run: |
+          npm pack
+          (cd extension && zip -r ../porchlight-extension.zip .)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: porchlight-0.8.1
+          path: |
+            *.tgz
+            porchlight-extension.zip

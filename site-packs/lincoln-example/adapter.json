@@ -1,0 +1,16 @@
+{
+  "schema": "porchlight.site-pack.v1",
+  "site": "lincoln-example",
+  "publicOrigin": "https://portal.example",
+  "originFingerprint": "2bfb04a8acd0a32e3be17884d0d1043652094a885bdf5d97f6ae8ad0b0573449",
+  "generatedBy": "fixture-only",
+  "observedAt": "2026-08-11T00:00:00.000Z",
+  "freshUntil": "2099-01-01T00:00:00.000Z",
+  "privacy": {"rawDom": false, "screenshots": false, "fieldValues": false, "accountIdentifiers": false, "pathAndQuery": false, "publicOrigin": true},
+  "adapter": {"receiptClaims": ["page_action_verified", "remote_received"], "nativeRoutes": ["upload"]},
+  "routes": [
+    {"pageArchetype":"claim-overview","action":"click","task":"view documents","accessibleName":"View documents","role":"button","locatorStrategy":"accessible_name","selectorHint":"[data-testid=documents]","expectedPostcondition":"documents region appears","accessibilityFailure":"","successes":3,"failures":0},
+    {"pageArchetype":"claim-overview","action":"route_native","task":"upload a document","accessibleName":"Upload","role":"button","locatorStrategy":"accessible_name","selectorHint":"","expectedPostcondition":"native operator returns a separate receipt","accessibilityFailure":"native file picker is outside DOM authority","successes":3,"failures":0},
+    {"pageArchetype":"claim-overview","action":"submit","task":"submit a document","accessibleName":"Submit","role":"button","locatorStrategy":"accessible_name","selectorHint":"","expectedPostcondition":"page action is verified; remote receipt remains unconfirmed until confirmation evidence appears","accessibilityFailure":"","successes":3,"failures":0}
+  ]
+}

@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {loadMap, renderAccessibleHtml} from './map.mjs';
+const root = path.resolve(process.argv[2] || path.dirname(new URL(import.meta.url).pathname));
+const output = path.resolve(process.argv[3] || path.join(root, 'dist'));
+fs.mkdirSync(output, {recursive: true});
+const index = loadMap(root);
+fs.writeFileSync(path.join(output, 'index.json'), JSON.stringify(index, null, 2) + '\n');
+fs.writeFileSync(path.join(output, 'index.html'), renderAccessibleHtml(index));
+process.stdout.write(JSON.stringify({sites: index.sites.length, output}) + '\n');

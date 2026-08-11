@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://porchlight.example/schemas/site-pack.v1.json",
+  "title": "Porchlight Internet Access Map site pack",
+  "type": "object",
+  "required": ["schema", "site", "publicOrigin", "observedAt", "freshUntil", "privacy", "routes"],
+  "properties": {
+    "schema": {"const": "porchlight.site-pack.v1"},
+    "site": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"},
+    "publicOrigin": {"type": "string", "pattern": "^https://[^/?#]+$"},
+    "observedAt": {"type": "string", "format": "date-time"},
+    "freshUntil": {"type": "string", "format": "date-time"},
+    "routes": {"type": "array", "items": {"type": "object", "required": ["pageArchetype", "action", "expectedPostcondition", "successes"]}}
+  }
+}
