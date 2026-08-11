@@ -1,0 +1,41 @@
+{
+  "name": "@porchlight/internet-access-map",
+  "version": "0.8.1",
+  "description": "A deterministic worker and living accessibility map of the internet",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "porchlight": "./cli.mjs",
+    "porchlight-map": "./map-cli.mjs"
+  },
+  "files": [
+    "*.mjs",
+    "*.json",
+    "extension",
+    "site-packs",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test product.test.mjs",
+    "build": "node build-map.mjs . dist",
+    "freshness": "node freshness.mjs ."
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valar05/porchlight.git"
+  },
+  "homepage": "https://github.com/Valar05/porchlight#readme",
+  "bugs": {
+    "url": "https://github.com/Valar05/porchlight/issues"
+  },
+  "keywords": [
+    "accessibility",
+    "internet-map",
+    "browser-extension",
+    "assistive-technology",
+    "deterministic"
+  ]
+}
