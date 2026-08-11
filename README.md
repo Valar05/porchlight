@@ -4,7 +4,7 @@ Porchlight is a living, community-reviewed map of how people and assistive tools
 
 **The map is the product.** The local paired-tab runtime is one deterministic discovery and verification worker. It contains no model, embeddings, OCR, or network inference.
 
-Status: **public beta 0.8.1**. The source and hostile-origin contract are tested. Installation, pairing, and any site action remain local acts performed by each user.
+Status: **public beta 0.8.1**. The source and hostile-origin contract are tested. The read-only map is published at **https://valar05.github.io/porchlight/** and rebuilt from reviewed site packs on every relevant main-branch change and nightly schedule. Installation, pairing, and any site action remain local acts performed by each user.
 
 ## Install a local worker
 

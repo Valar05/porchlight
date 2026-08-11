@@ -19,7 +19,7 @@ Porchlight is an accessible, community-reviewed map of the internet kept current
 - Privacy-safe receipts, metrics, discovery graduation, site-pack generation, accessible HTML/JSON map, query CLI, and freshness checks: implemented and tested.
 - Public site-pack contribution through GitHub PRs: implemented; requires each worker's configured git/GitHub authority.
 - Packaged extension/store listing: not delivered.
-- Hosted public map: not deployed.
+- Hosted public map: deployed as a read-only GitHub Pages projection at https://valar05.github.io/porchlight/; each relevant main change and nightly schedule rebuilds it from reviewed site packs.
 - Any particular user's browser installation or site pairing: not implied.
 - Remote institutional receipt or indexing: never inferred from a page action.
 
@@ -29,4 +29,4 @@ Public contributions exclude URL paths/query strings, accounts, typed values, ra
 
 ## Active gate
 
-Grow the map through privacy-safe site-pack PRs, establish a hosted read-only map surface, and add a reproducible signed/package release lane without weakening local-only operation or receipt truth.
+Grow the hosted map through privacy-safe site-pack PRs and add a reproducible signed/package release lane without weakening local-only operation or receipt truth.
